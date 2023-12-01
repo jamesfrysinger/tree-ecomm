@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <nav></nav>
       </header>
-    </div>
+      <main>
+        {/* Product Landing Page */}
+        <section className="product-landing-page">
+          <div className="product-tile">
+            <img alt="" />
+            <div>Product Desc</div>
+          </div>
+          <div className="product-tile">
+            <img alt="" />
+            <div>Product Desc</div>
+          </div>
+          <div className="product-tile">
+            <img alt="" />
+            <div>Product Desc</div>
+          </div>
+          <div className="product-tile">
+            <img alt="" />
+            <div>Product Desc</div>
+          </div>
+          <div className="product-tile">
+            <img alt="" />
+            <div>Product Desc</div>
+          </div>
+          <div className="product-tile">
+            <img alt="" />
+            <div>Product Desc</div>
+          </div>
+        </section>
+        {/* Product Detail Page */}
+        <section className="product-detail-page">
+          <img alt="" />
+          <div className="product-details">
+            Product Details <button>Add To Cart</button>
+          </div>
+        </section>
+        {/* Shopping Bag */}
+        <section className="shopping-bag">Shopping Bag</section>
+      </main>
+    </>
   );
-}
+};
 
 export default App;
