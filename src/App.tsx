@@ -1,48 +1,17 @@
 import { FC } from "react";
+import Header from "./components/Header/Header";
+import ProductLandingPage from "./components/ProductLandingPage";
+import ProductDetailPage from "./components/ProductDetailPage";
+import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
 
 const App: FC = () => {
   return (
     <>
-      <header>
-        <nav></nav>
-      </header>
+      <Header />
       <main>
-        {/* Product Landing Page */}
-        <section className="product-landing-page">
-          <div className="product-tile">
-            <img alt="" />
-            <div>Product Desc</div>
-          </div>
-          <div className="product-tile">
-            <img alt="" />
-            <div>Product Desc</div>
-          </div>
-          <div className="product-tile">
-            <img alt="" />
-            <div>Product Desc</div>
-          </div>
-          <div className="product-tile">
-            <img alt="" />
-            <div>Product Desc</div>
-          </div>
-          <div className="product-tile">
-            <img alt="" />
-            <div>Product Desc</div>
-          </div>
-          <div className="product-tile">
-            <img alt="" />
-            <div>Product Desc</div>
-          </div>
-        </section>
-        {/* Product Detail Page */}
-        <section className="product-detail-page">
-          <img alt="" />
-          <div className="product-details">
-            Product Details <button>Add To Cart</button>
-          </div>
-        </section>
-        {/* Shopping Bag */}
-        <section className="shopping-bag">Shopping Bag</section>
+        <ProductLandingPage />
+        <ProductDetailPage />
+        <ShoppingBag />
       </main>
     </>
   );
