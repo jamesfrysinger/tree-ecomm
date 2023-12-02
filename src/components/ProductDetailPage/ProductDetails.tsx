@@ -1,8 +1,15 @@
 import { FC } from "react";
+import { IProductDetails } from "../../types/productsType";
 
-const ProductDetails: FC = () => (
+interface ProductDetailsComponent {
+  productDetails?: IProductDetails;
+}
+const ProductDetails: FC<ProductDetailsComponent> = ({ productDetails }) => (
   <div className="product-details">
-    Product Details <button>Add To Cart</button>
+    <h1>{productDetails?.title}</h1>
+    <h2>About</h2>
+    <p>{productDetails?.body}</p>
+    <button>Add To Cart</button>
   </div>
 );
 

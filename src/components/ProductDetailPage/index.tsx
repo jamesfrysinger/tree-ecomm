@@ -4,6 +4,7 @@ import axios from "axios";
 import { IProductDetails } from "../../types/productsType";
 import { useParams } from "react-router-dom";
 import { formatProductTitleForURL } from "../../utils/productDetailPage-helper";
+import ProductDetailsGallery from "./ProductDetailsGallery";
 
 const ProductDetailPage: FC = () => {
   const { title } = useParams();
@@ -25,9 +26,8 @@ const ProductDetailPage: FC = () => {
 
   return (
     <section className="product-detail-page">
-      <img alt={productDetails?.title} />
-      <h1>{productDetails?.title}</h1>
-      <ProductDetails />
+      <ProductDetailsGallery productImages={productDetails?.images} />
+      <ProductDetails productDetails={productDetails} />
     </section>
   );
 };

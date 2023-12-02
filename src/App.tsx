@@ -14,7 +14,6 @@ const App: FC = () => {
           <Route path="/" element={<ProductLandingPage />} />
           <Route path="/product/:title" element={<ProductDetailPage />} />
         </Routes>
-
         <ShoppingBag />
       </main>
     </>

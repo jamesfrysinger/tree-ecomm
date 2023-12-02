@@ -15,19 +15,17 @@ export interface IProductDetails {
   thumbnail: IProductThumbnail;
 }
 
-export type TProductImages = [
-  {
-    id: number;
-    product_id: number;
-    created_at: string;
-    updated_at: string;
-    alt: null;
-    width: number;
-    height: number;
-    src: string;
-    variant_ids: [];
-  }
-];
+export type TProductImages = {
+  id: number;
+  product_id: number;
+  created_at: string;
+  updated_at: string;
+  alt: null;
+  width: number;
+  height: number;
+  src: string;
+  variant_ids: [];
+};
 
 export interface IProductThumbnail {
   id: number;
