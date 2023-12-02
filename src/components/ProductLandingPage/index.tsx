@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ProductTile from "./ProductTile";
 import axios from "axios";
 import { IProduct } from "../../types/productsType";
 
-const ProductLandingPage = () => {
+const ProductLandingPage: FC = () => {
   const [products, setProducts] = useState<IProduct>();
   useEffect(() => {
     axios

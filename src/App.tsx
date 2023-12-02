@@ -12,8 +12,9 @@ const App: FC = () => {
       <main>
         <Routes>
           <Route path="/" element={<ProductLandingPage />} />
-          <Route path="/product" element={<ProductDetailPage />} />
+          <Route path="/product/:title" element={<ProductDetailPage />} />
         </Routes>
+
         <ShoppingBag />
       </main>
     </>
