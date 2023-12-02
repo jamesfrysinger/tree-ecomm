@@ -1,2 +1,7 @@
 export const formatProductTitleForURL = (title: string) =>
-  encodeURIComponent(title.replace(/\s+/g, "-").toLowerCase());
+  encodeURIComponent(
+    title
+      .replace(/[^\w\s]/gi, "")
+      .replace(/\s+/g, "-")
+      .toLowerCase()
+  );
