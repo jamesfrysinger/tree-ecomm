@@ -5,6 +5,7 @@ import { IProductDetails } from "../../types/productsType";
 import { useParams } from "react-router-dom";
 import { formatProductTitleForURL } from "../../utils/productDetailPage-helper";
 import ProductDetailsGallery from "./ProductDetailsGallery";
+import ProductNotFound from "../Errors/ProductNotFound";
 
 const ProductDetailPage: FC = () => {
   const { title } = useParams();
@@ -26,8 +27,14 @@ const ProductDetailPage: FC = () => {
 
   return (
     <section className="product-detail-page">
-      <ProductDetailsGallery productImages={productDetails?.images} />
-      <ProductDetails productDetails={productDetails} />
+      {productDetails ? (
+        <>
+          <ProductDetailsGallery productImages={productDetails?.images} />
+          <ProductDetails productDetails={productDetails} />
+        </>
+      ) : (
+        <ProductNotFound />
+      )}
     </section>
   );
 };
