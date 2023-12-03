@@ -22,7 +22,7 @@ const ShoppingBag: FC = () => {
             </button>
           </li>
         ))}
-      <h1>{formattedPrice(state.total)}</h1>
+      <h1>{formattedPrice(state.subTotal)}</h1>
     </section>
   );
 };

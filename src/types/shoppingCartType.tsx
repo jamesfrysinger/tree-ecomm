@@ -8,7 +8,7 @@ interface IProduct {
 
 export interface IShoppingCartState {
   products: IProduct[];
-  total: number;
+  subTotal: number;
 }
 
 export type TAction =

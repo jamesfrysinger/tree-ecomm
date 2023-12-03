@@ -36,7 +36,7 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
 }) => {
   const initialState: IShoppingCartState = loadStateFromLocalStorage() || {
     products: [],
-    total: 0,
+    subTotal: 0,
   };
 
   const reducer = (
@@ -49,7 +49,7 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
           (product) => product.id === action.payload.id
         );
 
-        let updatedTotal = state.total;
+        let updatedSubTotal = state.subTotal;
 
         if (existingProductIndex !== -1) {
           const updatedProducts = [...state.products];
@@ -57,11 +57,11 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
             ...updatedProducts[existingProductIndex],
             quantity: (updatedProducts[existingProductIndex].quantity || 0) + 1,
           };
-          updatedTotal += updatedProducts[existingProductIndex].price || 0;
+          updatedSubTotal += updatedProducts[existingProductIndex].price || 0;
           const newState = {
             ...state,
             products: updatedProducts,
-            total: updatedTotal,
+            subTotal: updatedSubTotal,
           };
           saveStateToLocalStorage(newState);
           return newState;
@@ -69,7 +69,7 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
           const newState = {
             ...state,
             products: [...state.products, { ...action.payload, quantity: 1 }],
-            total: state.total + (action.payload.price || 0),
+            subTotal: state.subTotal + (action.payload.price || 0),
           };
           saveStateToLocalStorage(newState);
           return newState;
@@ -89,8 +89,8 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
         const newStateRemove = {
           ...state,
           products: updatedProducts,
-          total:
-            state.total -
+          subTotal:
+            state.subTotal -
             (removedProduct.price || 0) * (removedProduct.quantity || 1),
         };
         saveStateToLocalStorage(newStateRemove);
@@ -111,14 +111,14 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
                 .quantity || 0) - 1
             ),
           };
-          updatedTotal =
-            state.total -
+          updatedSubTotal =
+            state.subTotal -
             (updatedProductsDecrement[existingProductIndexDecrement].price ||
               0);
           const newStateDecrement = {
             ...state,
             products: updatedProductsDecrement,
-            total: updatedTotal,
+            subTotal: updatedSubTotal,
           };
           saveStateToLocalStorage(newStateDecrement);
           return newStateDecrement;
