@@ -4,10 +4,11 @@ import ProductLandingPage from "./components/ProductLandingPage";
 import ProductDetailPage from "./components/ProductDetailPage";
 import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
 
 const App: FC = () => {
   return (
-    <>
+    <ShoppingCartProvider>
       <Header />
       <Routes>
         <Route path="/" element={<ProductLandingPage />} />
@@ -15,7 +16,7 @@ const App: FC = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <ShoppingBag />
-    </>
+    </ShoppingCartProvider>
   );
 };
 
