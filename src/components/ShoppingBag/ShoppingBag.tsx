@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useShoppingCart } from "../../contexts/ShoppingCartContext";
+import { formattedPrice } from "../../utils/shoppingCart-helper";
 
 const ShoppingBag: FC = () => {
   const { state, dispatch } = useShoppingCart();
@@ -21,6 +22,7 @@ const ShoppingBag: FC = () => {
             </button>
           </li>
         ))}
+      <h1>{formattedPrice(state.total)}</h1>
     </section>
   );
 };

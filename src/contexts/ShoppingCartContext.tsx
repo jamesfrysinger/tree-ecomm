@@ -1,32 +1,9 @@
-import React, {
-  createContext,
-  useReducer,
-  useContext,
-  ReactNode,
-  FC,
-} from "react";
-
-interface IProduct {
-  id?: number;
-  name?: string;
-  description?: string;
-  price?: number;
-  quantity?: number;
-}
-
-interface IShoppingCartState {
-  products: IProduct[];
-}
-
-type TAction =
-  | { type: "ADD_TO_CART" | "INCREASE_QUANTITY"; payload: IProduct }
-  | { type: "REMOVE_FROM_CART"; payload: { id: number } }
-  | { type: "DECREMENT_QUANTITY"; payload: { id: number } };
-
-interface IContextProps {
-  state: IShoppingCartState;
-  dispatch: React.Dispatch<TAction>;
-}
+import { createContext, useReducer, useContext, ReactNode, FC } from "react";
+import {
+  IContextProps,
+  IShoppingCartState,
+  TAction,
+} from "../types/shoppingCartType";
 
 const ShoppingCartContext = createContext<IContextProps | undefined>(undefined);
 
@@ -59,6 +36,7 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
 }) => {
   const initialState: IShoppingCartState = loadStateFromLocalStorage() || {
     products: [],
+    total: 0,
   };
 
   const reducer = (
@@ -71,29 +49,50 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
           (product) => product.id === action.payload.id
         );
 
+        let updatedTotal = state.total;
+
         if (existingProductIndex !== -1) {
           const updatedProducts = [...state.products];
           updatedProducts[existingProductIndex] = {
             ...updatedProducts[existingProductIndex],
             quantity: (updatedProducts[existingProductIndex].quantity || 0) + 1,
           };
-          const newState = { ...state, products: updatedProducts };
+          updatedTotal += updatedProducts[existingProductIndex].price || 0;
+          const newState = {
+            ...state,
+            products: updatedProducts,
+            total: updatedTotal,
+          };
           saveStateToLocalStorage(newState);
           return newState;
         } else {
           const newState = {
             ...state,
             products: [...state.products, { ...action.payload, quantity: 1 }],
+            total: state.total + (action.payload.price || 0),
           };
           saveStateToLocalStorage(newState);
           return newState;
         }
 
       case "REMOVE_FROM_CART":
+        const removedProduct = state.products.find(
+          (product) => product.id === action.payload.id
+        );
+        if (!removedProduct) {
+          return state;
+        }
+
         const updatedProducts = state.products.filter(
           (product) => product.id !== action.payload.id
         );
-        const newStateRemove = { ...state, products: updatedProducts };
+        const newStateRemove = {
+          ...state,
+          products: updatedProducts,
+          total:
+            state.total -
+            (removedProduct.price || 0) * (removedProduct.quantity || 1),
+        };
         saveStateToLocalStorage(newStateRemove);
         return newStateRemove;
 
@@ -112,9 +111,14 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
                 .quantity || 0) - 1
             ),
           };
+          updatedTotal =
+            state.total -
+            (updatedProductsDecrement[existingProductIndexDecrement].price ||
+              0);
           const newStateDecrement = {
             ...state,
             products: updatedProductsDecrement,
+            total: updatedTotal,
           };
           saveStateToLocalStorage(newStateDecrement);
           return newStateDecrement;
