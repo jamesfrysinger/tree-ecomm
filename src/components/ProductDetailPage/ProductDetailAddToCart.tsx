@@ -12,7 +12,7 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
 
   const product = {
     id: productDetails?.id,
-    name: productDetails?.title,
+    title: productDetails?.title,
     description: productDetails?.body,
     price: productDetails?.price,
     quantity: 1,

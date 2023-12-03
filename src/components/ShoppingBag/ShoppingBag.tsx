@@ -16,7 +16,7 @@ const ShoppingBag: FC = () => {
       {state.products &&
         state.products.map((product) => (
           <li key={product.id}>
-            {product.description} - Quantity: {product.quantity}
+            {product.title} - Quantity: {product.quantity}
             <button onClick={() => removeFromCart(product.id as number)}>
               Remove
             </button>

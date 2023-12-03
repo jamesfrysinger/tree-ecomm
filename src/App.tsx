@@ -5,6 +5,7 @@ import ProductDetailPage from "./components/ProductDetailPage";
 import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
+import "./index.css";
 
 const App: FC = () => {
   return (
