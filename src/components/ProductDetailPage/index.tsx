@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import ProductDetails from "./ProductDetails";
 import axios from "axios";
-import { IProductDetails } from "../../types/productsType";
+import { IProductDetails } from "types/productsType";
 import { useParams } from "react-router-dom";
-import { formatProductTitleForURL } from "../../utils/productDetailPage-helper";
+import { formatProductTitleForURL } from "utils/productDetailPage-helper";
 import ProductDetailsGallery from "./ProductDetailsGallery";
 import ProductNotFound from "../Errors/ProductNotFound";
 
@@ -13,7 +13,7 @@ const ProductDetailPage: FC = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/data.json")
+      .get("//localhost:3000/api/data.json")
       .then((res) =>
         setProductDetails(
           res.data.products.filter(

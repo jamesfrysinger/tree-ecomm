@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { IProductDetails } from "../../types/productsType";
-import { useShoppingCart } from "../../contexts/ShoppingCartContext";
+import { IProductDetails } from "types/productsType";
+import { useShoppingCart } from "contexts/ShoppingCartContext";
 interface ProductDetailsComponent {
   productDetails?: IProductDetails;
 }

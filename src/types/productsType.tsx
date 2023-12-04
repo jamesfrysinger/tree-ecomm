@@ -32,7 +32,7 @@ export interface IProductThumbnail {
   product_id: number;
   created_at: string;
   updated_at: string;
-  alt: null;
+  alt: string | null;
   width: number;
   height: number;
   src: string;

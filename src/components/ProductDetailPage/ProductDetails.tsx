@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IProductDetails } from "../../types/productsType";
+import { IProductDetails } from "types/productsType";
 import ProductDetailAddToCart from "./ProductDetailAddToCart";
 
 interface ProductDetailsComponent {

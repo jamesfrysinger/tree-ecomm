@@ -11,11 +11,13 @@ const App: FC = () => {
   return (
     <ShoppingCartProvider>
       <Header />
-      <Routes>
-        <Route path="/" element={<ProductLandingPage />} />
-        <Route path="/product/:title" element={<ProductDetailPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <div className="flex justify-center mx-6">
+        <Routes>
+          <Route path="/" element={<ProductLandingPage />} />
+          <Route path="/product/:title" element={<ProductDetailPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
       <ShoppingBag />
     </ShoppingCartProvider>
   );

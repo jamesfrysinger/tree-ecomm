@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TProductImages } from "../../types/productsType";
+import { TProductImages } from "types/productsType";
 
 interface IProductDetailsGallery {
   productImages?: TProductImages[];
