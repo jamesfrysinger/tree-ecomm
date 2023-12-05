@@ -7,7 +7,7 @@ const ProductLandingPage: FC = () => {
   const [products, setProducts] = useState<IProduct>();
   useEffect(() => {
     axios
-      .get("//localhost:3000/api/data.json")
+      .get("/api/data.json")
       .then((res) => setProducts(res.data))
       .catch((err) => console.warn(err));
   }, []);

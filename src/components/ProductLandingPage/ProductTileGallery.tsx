@@ -11,7 +11,7 @@ const ProductTileGallery: FC<IProductTileGallery> = ({ thumbnail }) => (
     imageUrl={thumbnail.src}
     altText={thumbnail.alt}
     width="100%"
-    placeholderUrl={"//localhost:3000/images/placeholder-image.jpg"}
+    placeholderUrl={"/images/placeholder-image.jpg"}
   />
 );
 

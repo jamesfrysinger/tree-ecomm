@@ -10,7 +10,7 @@ const ShoppingBag: FC = () => {
   };
 
   return (
-    <section className="fixed top-0 left-0 bg-white bg-opacity-80 h-screen w-screen">
+    <section className="fixed top-0 left-0 bg-white bg-opacity-80 h-screen w-screen hidden">
       <div className="absolute right-0 top-0 bottom-0 bg-white w-2/4 max-w-xl">
         <header className="cart-header">
           <button className="close"></button>

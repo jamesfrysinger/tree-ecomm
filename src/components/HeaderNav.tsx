@@ -14,7 +14,7 @@ const HeaderNav: FC = () => {
   return (
     <nav className="relative">
       <Image
-        imageUrl="//localhost:3000/images/cart-icon.svg"
+        imageUrl="/images/cart-icon.svg"
         altText="Fast Growing Trees"
         style={{ width: "36px", height: "36px" }}
       />

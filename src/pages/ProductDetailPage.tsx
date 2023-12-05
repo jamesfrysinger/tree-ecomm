@@ -13,7 +13,7 @@ const ProductDetailPage: FC = () => {
 
   useEffect(() => {
     axios
-      .get("//localhost:3000/api/data.json")
+      .get("/api/data.json")
       .then((res) =>
         setProductDetails(
           res.data.products.filter(

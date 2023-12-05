@@ -17,7 +17,7 @@ const ProductDetailsGallery: FC<IProductDetailsGallery> = ({
           imageUrl={item.src}
           altText={item.alt}
           width="100%"
-          placeholderUrl={"//localhost:3000/images/placeholder-image.jpg"}
+          placeholderUrl={"/images/placeholder-image.jpg"}
         />
       ))[0]
     }
