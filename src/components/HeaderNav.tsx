@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Image from "./Common/Image";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 
 const HeaderNav: FC = () => {
-  const { state, dispatch } = useShoppingCart();
+  const { state } = useShoppingCart();
 
   const quantities = state.products.map((item) => item?.quantity ?? 0);
   const itemsInCart = quantities.reduce(
