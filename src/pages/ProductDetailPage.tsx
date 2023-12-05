@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from "react";
-import ProductDetails from "./ProductDetails";
+import ProductDetails from "../components/ProductDetailPage/ProductDetails";
 import axios from "axios";
 import { IProductDetails } from "types/productsType";
 import { useParams } from "react-router-dom";
 import { formatProductTitleForURL } from "utils/productDetailPage-helper";
-import ProductDetailsGallery from "./ProductDetailsGallery";
-import ProductNotFound from "../Errors/ProductNotFound";
+import ProductDetailsGallery from "../components/ProductDetailPage/ProductDetailsGallery";
+import ProductNotFound from "../components/Errors/ProductNotFound";
 
 const ProductDetailPage: FC = () => {
   const { title } = useParams();
@@ -26,7 +26,7 @@ const ProductDetailPage: FC = () => {
   }, [title]);
 
   return (
-    <section className="product-detail-page">
+    <section className="flex flex-wrap lg:flex-nowrap container lg:space-x-10 px-4 py-4 lg:px-6 lg:py-6">
       {productDetails ? (
         <>
           <ProductDetailsGallery productImages={productDetails?.images} />

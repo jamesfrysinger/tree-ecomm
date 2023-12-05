@@ -20,6 +20,7 @@ const Image: FC<{
       height={height}
       style={style}
       title={title}
+      loading="lazy"
     />
   );
 };

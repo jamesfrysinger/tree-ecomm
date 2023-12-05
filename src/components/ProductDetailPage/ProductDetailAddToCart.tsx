@@ -1,9 +1,15 @@
 import { FC } from "react";
 import { IProductDetails } from "types/productsType";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
+import styled from "styled-components";
+
 interface ProductDetailsComponent {
   productDetails?: IProductDetails;
 }
+
+const ButtonAddToCart = styled.button`
+  background-color: var(--color-red);
+`;
 
 const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
   productDetails,
@@ -27,9 +33,13 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
   };
 
   return (
-    <button onClick={addToCart} disabled={!productDetails}>
+    <ButtonAddToCart
+      onClick={addToCart}
+      disabled={!productDetails}
+      className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white"
+    >
       Add To Cart
-    </button>
+    </ButtonAddToCart>
   );
 };
 

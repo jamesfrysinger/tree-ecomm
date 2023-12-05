@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import ProductTile from "./ProductTile";
+import ProductTile from "../components/ProductLandingPage/ProductTile";
 import axios from "axios";
 import { IProduct } from "types/productsType";
 

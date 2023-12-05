@@ -1,18 +1,26 @@
+import Image from "components/Common/Image";
 import { FC } from "react";
 import { TProductImages } from "types/productsType";
 
 interface IProductDetailsGallery {
   productImages?: TProductImages[];
 }
+
 const ProductDetailsGallery: FC<IProductDetailsGallery> = ({
   productImages,
 }) => (
-  <>
+  <div className="w-full lg:w-3/5 rounded-t-lg lg:rounded-b-lg overflow-hidden self-start">
     {
       productImages?.map((item) => (
-        <img src={item.src} key={item.id} alt={item.alt ?? ""} />
+        <Image
+          key={item.id}
+          imageUrl={item.src}
+          altText={item.alt}
+          width="100%"
+          placeholderUrl={"//localhost:3000/images/placeholder-image.jpg"}
+        />
       ))[0]
     }
-  </>
+  </div>
 );
 export default ProductDetailsGallery;
