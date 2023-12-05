@@ -38,7 +38,7 @@ const ItemsInShoppingCart: FC = () => {
           </div>
         ))
       ) : (
-        <p className="font-bold">Your shopping cart is empty</p>
+        <p className="font-bold text-center">Your shopping cart is empty</p>
       )}
     </div>
   );

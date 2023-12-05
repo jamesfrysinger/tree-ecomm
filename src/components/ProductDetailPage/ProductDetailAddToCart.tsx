@@ -3,7 +3,7 @@ import { IProductDetails } from "types/productsType";
 import { IProductShoppingCart } from "types/shoppingCartType";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import styled from "styled-components";
-import { addToCart } from "utils/shoppingCart-helper";
+import { addToCart, toggleCart } from "utils/shoppingCart-helper";
 
 interface ProductDetailsComponent {
   productDetails?: IProductDetails;
@@ -29,7 +29,10 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
 
   return (
     <ButtonAddToCart
-      onClick={() => addToCart(product, dispatch)}
+      onClick={() => {
+        addToCart(product, dispatch);
+        toggleCart(dispatch);
+      }}
       disabled={!productDetails}
       className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white text-2xl"
     >

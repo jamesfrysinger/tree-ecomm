@@ -6,13 +6,15 @@ const CloseShoppingCart = () => {
   const { dispatch } = useShoppingCart();
 
   return (
-    <button className="close w-1/2" onClick={() => toggleCart(dispatch)}>
-      <Image
-        imageUrl="\images\close-btn.svg"
-        altText="Close Shopping Cart"
-        style={{ width: "24px" }}
-      />
-    </button>
+    <div className="w-1/2">
+      <button onClick={() => toggleCart(dispatch)}>
+        <Image
+          imageUrl="\images\close-btn.svg"
+          altText="Close Shopping Cart"
+          style={{ width: "24px" }}
+        />
+      </button>
+    </div>
   );
 };
 
