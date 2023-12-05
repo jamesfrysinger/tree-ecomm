@@ -1,7 +1,7 @@
 import { FC } from "react";
 import ProductLandingPage from "./pages/ProductLandingPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import ShoppingBag from "./pages/ShoppingBag";
+import ShoppingCart from "./pages/ShoppingCart";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
 import "./index.css";
@@ -20,7 +20,7 @@ const App: FC = () => {
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>
-          <ShoppingBag />
+          <ShoppingCart />
         </ShoppingCartProvider>
       </div>
     </div>

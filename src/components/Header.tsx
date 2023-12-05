@@ -9,7 +9,7 @@ const Header: FC = () => (
       <Image
         imageUrl="/images/fgt-logo.svg"
         altText="Fast Growing Trees"
-        style={{ width: "30px", height: "38px" }}
+        style={{ width: "30px" }}
       />
     </Link>
     <HeaderNav />

@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { IProductDetails } from "types/productsType";
+import { IProductShoppingCart } from "types/shoppingCartType";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import styled from "styled-components";
+import { addToCart } from "utils/shoppingCart-helper";
 
 interface ProductDetailsComponent {
   productDetails?: IProductDetails;
@@ -16,25 +18,18 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
 }) => {
   const { dispatch } = useShoppingCart();
 
-  const product = {
+  const product: IProductShoppingCart = {
     id: productDetails?.id,
     title: productDetails?.title,
     description: productDetails?.body,
     price: productDetails?.price,
+    thumbnail: productDetails?.thumbnail.src,
     quantity: 1,
-  };
-
-  const addToCart = () => {
-    if (productDetails)
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: { ...product, quantity: product.quantity },
-      });
   };
 
   return (
     <ButtonAddToCart
-      onClick={addToCart}
+      onClick={() => addToCart(productDetails, product, dispatch)}
       disabled={!productDetails}
       className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white text-2xl"
     >

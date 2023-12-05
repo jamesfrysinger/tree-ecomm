@@ -8,7 +8,17 @@ const Image: FC<{
   width?: string;
   height?: string;
   style?: CSSProperties;
-}> = ({ imageUrl, placeholderUrl, altText, title, width, height, style }) => {
+  className?: string;
+}> = ({
+  imageUrl,
+  placeholderUrl,
+  altText,
+  title,
+  width,
+  height,
+  style,
+  className,
+}) => {
   return (
     <img
       src={imageUrl}
@@ -21,6 +31,7 @@ const Image: FC<{
       style={style}
       title={title}
       loading="lazy"
+      className={className}
     />
   );
 };
