@@ -1,7 +1,7 @@
 import { FC } from "react";
 import ProductLandingPage from "./pages/ProductLandingPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
+import ShoppingBag from "./pages/ShoppingBag";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
 import "./index.css";
