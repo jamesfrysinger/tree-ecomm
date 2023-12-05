@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { IProductDetails } from "types/productsType";
 import ProductDetailAddToCart from "./ProductDetailAddToCart";
-import styled from "styled-components";
 
 interface ProductDetailsComponent {
   productDetails?: IProductDetails;
