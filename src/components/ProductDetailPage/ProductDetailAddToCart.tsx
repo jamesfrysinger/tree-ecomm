@@ -29,7 +29,7 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
 
   return (
     <ButtonAddToCart
-      onClick={() => addToCart(productDetails, product, dispatch)}
+      onClick={() => addToCart(product, dispatch)}
       disabled={!productDetails}
       className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white text-2xl"
     >

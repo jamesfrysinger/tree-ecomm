@@ -1,4 +1,3 @@
-import { IProductDetails } from "types/productsType";
 import { IProductShoppingCart } from "types/shoppingCartType";
 import { TAction } from "types/shoppingCartType";
 
@@ -10,14 +9,24 @@ export const formattedPrice = (price: number) => {
 };
 
 export const addToCart = (
-  productDetails: IProductDetails | undefined,
   product: IProductShoppingCart,
   dispatch: React.Dispatch<TAction>
 ) => {
-  if (productDetails)
+  if (product)
     dispatch({
       type: "ADD_TO_CART",
       payload: { ...product, quantity: product.quantity },
+    });
+};
+
+export const decrementQuantity = (
+  product: IProductShoppingCart,
+  dispatch: React.Dispatch<TAction>
+) => {
+  if (product)
+    dispatch({
+      type: "DECREMENT_QUANTITY",
+      payload: { ...product, id: product.id ?? 0 },
     });
 };
 
@@ -26,4 +35,10 @@ export const removeFromCart = (
   dispatch: React.Dispatch<TAction>
 ) => {
   dispatch({ type: "REMOVE_FROM_CART", payload: { id: productId } });
+};
+
+export const toggleCart = (dispatch: React.Dispatch<TAction>) => {
+  dispatch({
+    type: "TOGGLE_CART",
+  });
 };

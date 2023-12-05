@@ -37,19 +37,20 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
   const initialState: IShoppingCartState = loadStateFromLocalStorage() || {
     products: [],
     subTotal: 0,
+    cartIsOpen: false,
   };
 
   const reducer = (
     state: IShoppingCartState,
     action: TAction
   ): IShoppingCartState => {
+    let updatedSubTotal = state.subTotal;
+
     switch (action.type) {
       case "ADD_TO_CART" || "INCREASE_QUANTITY":
         const existingProductIndex = state.products.findIndex(
           (product) => product.id === action.payload.id
         );
-
-        let updatedSubTotal = state.subTotal;
 
         if (existingProductIndex !== -1) {
           const updatedProducts = [...state.products];
@@ -103,28 +104,43 @@ export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
 
         if (existingProductIndexDecrement !== -1) {
           const updatedProductsDecrement = [...state.products];
-          updatedProductsDecrement[existingProductIndexDecrement] = {
-            ...updatedProductsDecrement[existingProductIndexDecrement],
-            quantity: Math.max(
-              0,
-              (updatedProductsDecrement[existingProductIndexDecrement]
-                .quantity || 0) - 1
-            ),
-          };
-          updatedSubTotal =
-            state.subTotal -
-            (updatedProductsDecrement[existingProductIndexDecrement].price ||
-              0);
+          const currentProduct =
+            updatedProductsDecrement[existingProductIndexDecrement];
+
+          const updatedQuantity = Math.max(
+            1,
+            (currentProduct!.quantity || 0) - 1
+          );
+
+          if (currentProduct!.quantity && currentProduct!.quantity > 1) {
+            updatedSubTotal = state.subTotal - (currentProduct!.price || 0);
+            updatedProductsDecrement[existingProductIndexDecrement] = {
+              ...currentProduct!,
+              quantity: updatedQuantity,
+            };
+          } else {
+            updatedProductsDecrement[existingProductIndexDecrement] = {
+              ...currentProduct!,
+              quantity: updatedQuantity,
+            };
+          }
+
           const newStateDecrement = {
             ...state,
             products: updatedProductsDecrement,
             subTotal: updatedSubTotal,
           };
+
           saveStateToLocalStorage(newStateDecrement);
           return newStateDecrement;
         } else {
           return state;
         }
+      case "TOGGLE_CART":
+        return {
+          ...state,
+          cartIsOpen: !state.cartIsOpen,
+        };
 
       default:
         return state;
