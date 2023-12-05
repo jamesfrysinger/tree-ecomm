@@ -13,7 +13,7 @@ const ProductLandingPage: FC = () => {
   }, []);
 
   return (
-    <section className="flex flex-wrap container">
+    <section className="flex flex-wrap">
       {products?.products.map((product) => (
         <ProductTile product={product} key={product.id} />
       ))}

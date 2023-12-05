@@ -12,7 +12,7 @@ interface IProductTile {
 const ProductTileContainer = styled.div``;
 
 const ProductTile: FC<IProductTile> = ({ product }) => (
-  <div className="w-full  sm:w-1/2  md:w-1/2 lg:w-1/3 px-4 py-4 lg:px-6 lg:py-6 box-border">
+  <div className="w-1/2 sm:w-1/2  md:w-1/2 lg:w-1/3 px-4 py-4 lg:px-6 lg:py-6 box-border">
     <ProductTileContainer className="rounded-lg overflow-hidden shadow-md bg-white hover:bg-lime-50 transition-all">
       <Link to={`/product/${formatProductTitleForURL(product.title)}`}>
         <ProductTileGallery thumbnail={product.thumbnail} />

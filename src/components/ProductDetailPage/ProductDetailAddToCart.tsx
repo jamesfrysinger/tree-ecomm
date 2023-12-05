@@ -36,7 +36,7 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
     <ButtonAddToCart
       onClick={addToCart}
       disabled={!productDetails}
-      className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white"
+      className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white text-2xl"
     >
       Add To Cart
     </ButtonAddToCart>

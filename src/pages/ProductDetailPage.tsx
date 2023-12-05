@@ -26,7 +26,7 @@ const ProductDetailPage: FC = () => {
   }, [title]);
 
   return (
-    <section className="flex flex-wrap lg:flex-nowrap container lg:space-x-10 px-4 py-4 lg:px-6 lg:py-6">
+    <section className="flex flex-wrap lg:flex-nowrap lg:space-x-10 px-4 py-4 lg:px-6 lg:py-6">
       {productDetails ? (
         <>
           <ProductDetailsGallery productImages={productDetails?.images} />

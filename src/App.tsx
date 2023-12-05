@@ -9,17 +9,21 @@ import Header from "components/Header";
 
 const App: FC = () => {
   return (
-    <ShoppingCartProvider>
-      <Header />
-      <div className="flex justify-center">
-        <Routes>
-          <Route path="/" element={<ProductLandingPage />} />
-          <Route path="/product/:title" element={<ProductDetailPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+    <div className="flex justify-center">
+      <div className="container">
+        <ShoppingCartProvider>
+          <Header />
+          <div className="flex ">
+            <Routes>
+              <Route path="/" element={<ProductLandingPage />} />
+              <Route path="/product/:title" element={<ProductDetailPage />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
+          <ShoppingBag />
+        </ShoppingCartProvider>
       </div>
-      <ShoppingBag />
-    </ShoppingCartProvider>
+    </div>
   );
 };
 
