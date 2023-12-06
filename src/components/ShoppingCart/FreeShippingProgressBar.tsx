@@ -38,7 +38,7 @@ const FreeShippingProgressBar: FC<{
   }, [calculateAmountLeft]);
 
   return (
-    <div className="flex flex-wrap w-full py-8">
+    <div className="flex flex-wrap w-full pt-0 pb-6">
       {amountLeft ? (
         <>
           <p className="text-center w-full py-2">

@@ -4,7 +4,7 @@ import CloseShoppingCart from "./CloseShoppingCart";
 
 const ShoppingCartHeader: FC = () => {
   return (
-    <header className="flex justify-start">
+    <header className="flex justify-start sticky top-0 py-6 bg-white">
       <CloseShoppingCart />
       <Image
         className="w-1/2"

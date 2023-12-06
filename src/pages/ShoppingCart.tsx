@@ -15,7 +15,7 @@ const ShoppingCart: FC = () => {
         state.cartIsOpen ? "invisible" : null
       }`}
     >
-      <div className="absolute right-0 top-0 bottom-0 bg-white w-full md:w-2/4 max-w-xl px-6 py-6 shadow-lg">
+      <div className="absolute right-0 top-0 bottom-0 bg-white w-full md:w-2/4 max-w-xl px-6 shadow-lg overflow-y-auto">
         <ShoppingCartHeader />
         <FreeShippingProgressBar totalAmount={state.subTotal} />
         <ItemsInShoppingCart />

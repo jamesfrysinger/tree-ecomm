@@ -3,7 +3,11 @@ import Image from "components/Common/Image";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import { useEffect, useState } from "react";
 import { IProductDetails } from "types/productsType";
-import { addToCart, buildProductForCart } from "utils/shoppingCart-helper";
+import {
+  addToCart,
+  buildProductForCart,
+  removeFromCart,
+} from "utils/shoppingCart-helper";
 
 const RecommendedProducts = () => {
   const [recommendations, setRecommendations] = useState<IProductDetails[]>();
@@ -71,7 +75,16 @@ const RecommendedProducts = () => {
           </div>
         ) : (
           <div className="py-3 px-6">
-            <p className="font-bold text-sm">Added to cart!</p> {product.title}
+            <div className="w-full">
+              <p className="font-bold text-sm">Added to cart!</p>
+              {product.title}
+            </div>
+            <button
+              onClick={() => removeFromCart(product.id, dispatch)}
+              className="text-sm text-red-600"
+            >
+              Undo
+            </button>
           </div>
         );
       })}
