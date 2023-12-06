@@ -12,7 +12,7 @@ const ShoppingCart: FC = () => {
   return (
     <section
       className={`fixed top-0 left-0 bg-white bg-opacity-80 h-screen w-screen ${
-        state.cartIsOpen ? "invisible" : null
+        !state.cartIsOpen ? "hidden" : null
       }`}
     >
       <div className="absolute right-0 top-0 bottom-0 bg-white w-full md:w-2/4 max-w-xl px-6 shadow-lg overflow-y-auto">
