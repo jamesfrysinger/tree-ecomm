@@ -12,12 +12,12 @@ const ShoppingCart: FC = () => {
   return (
     <section
       className={`fixed top-0 left-0 bg-white bg-opacity-80 h-screen w-screen ${
-        !state.cartIsOpen ? "hidden" : null
+        state.cartIsOpen ? "invisible" : null
       }`}
     >
-      <div className="absolute right-0 top-0 bottom-0 bg-white w-2/4 max-w-xl px-6 py-6 shadow-lg">
+      <div className="absolute right-0 top-0 bottom-0 bg-white w-full md:w-2/4 max-w-xl px-6 py-6 shadow-lg">
         <ShoppingCartHeader />
-        <FreeShippingProgressBar totalAmount={Math.round(state.subTotal)} />
+        <FreeShippingProgressBar totalAmount={state.subTotal} />
         <ItemsInShoppingCart />
         <ShoppingCartBalance subTotal={state.subTotal} />
         <RecommendedProducts />

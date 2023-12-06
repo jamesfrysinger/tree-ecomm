@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { IProductDetails } from "types/productsType";
-import { IProductShoppingCart } from "types/shoppingCartType";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import styled from "styled-components";
-import { addToCart, toggleCart } from "utils/shoppingCart-helper";
+import {
+  addToCart,
+  buildProductForCart,
+  toggleCart,
+} from "utils/shoppingCart-helper";
 
 interface ProductDetailsComponent {
-  productDetails?: IProductDetails;
+  productDetails: IProductDetails;
 }
 
 const ButtonAddToCart = styled.button`
@@ -18,14 +21,7 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
 }) => {
   const { dispatch } = useShoppingCart();
 
-  const product: IProductShoppingCart = {
-    id: productDetails?.id,
-    title: productDetails?.title,
-    description: productDetails?.body,
-    price: productDetails?.price,
-    thumbnail: productDetails?.thumbnail.src,
-    quantity: 1,
-  };
+  const product = buildProductForCart(productDetails);
 
   return (
     <ButtonAddToCart

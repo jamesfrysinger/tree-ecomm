@@ -21,7 +21,7 @@ const ItemsInShoppingCart: FC = () => {
             />
             <div className="product-details">
               {product.title}
-              <div className="flex w-full">
+              <div className="flex w-full mt-4">
                 <p>${product.price}</p>
                 <EditProductQuantity product={product} />
               </div>

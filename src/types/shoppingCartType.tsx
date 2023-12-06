@@ -2,6 +2,7 @@ export interface IProductShoppingCart {
   id?: number;
   title?: string;
   description?: string;
+  productType?: string;
   price?: number;
   thumbnail?: string;
   quantity?: number;

@@ -9,7 +9,7 @@ interface IProductDetailsGallery {
 const ProductDetailsGallery: FC<IProductDetailsGallery> = ({
   productImages,
 }) => (
-  <div className="w-full lg:w-3/5 rounded-t-lg lg:rounded-b-lg overflow-hidden self-start">
+  <div className="w-full lg:w-3/5 rounded-t-md lg:rounded-b-md overflow-hidden self-start">
     {
       productImages?.map((item) => (
         <Image

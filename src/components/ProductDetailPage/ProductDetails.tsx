@@ -8,12 +8,14 @@ interface ProductDetailsComponent {
 
 const ProductDetails: FC<ProductDetailsComponent> = ({ productDetails }) => {
   return (
-    <div className="w-full lg:w-2/5 self-start rounded-b-lg lg:rounded-t-lg bg-white px-6 py-6 space-y-4">
-      <h1 className="text-4xl font-medium">{productDetails?.title}</h1>
-      <h2 className="font-medium">About</h2>
-      <p>{productDetails?.body}</p>
-      <ProductDetailAddToCart productDetails={productDetails} />
-    </div>
+    (productDetails && (
+      <div className="w-full lg:w-2/5 self-start rounded-b-md lg:rounded-t-md bg-white px-6 py-6 space-y-4">
+        <h1 className="text-4xl font-medium">{productDetails?.title}</h1>
+        <h2 className="font-medium">About</h2>
+        <p>{productDetails?.body}</p>
+        <ProductDetailAddToCart productDetails={productDetails} />
+      </div>
+    )) ?? <></>
   );
 };
 

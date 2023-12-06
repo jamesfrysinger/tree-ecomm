@@ -1,3 +1,4 @@
+import { IProductDetails } from "types/productsType";
 import { IProductShoppingCart } from "types/shoppingCartType";
 import { TAction } from "types/shoppingCartType";
 
@@ -41,4 +42,16 @@ export const toggleCart = (dispatch: React.Dispatch<TAction>) => {
   dispatch({
     type: "TOGGLE_CART",
   });
+};
+
+export const buildProductForCart = (data: IProductDetails) => {
+  return {
+    id: data?.id,
+    title: data?.title,
+    description: data?.body,
+    productType: data.product_type,
+    price: data?.price,
+    thumbnail: data?.thumbnail.src,
+    quantity: 1,
+  };
 };

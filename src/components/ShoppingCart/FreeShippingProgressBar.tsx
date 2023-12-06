@@ -1,24 +1,36 @@
 import { FC, useCallback, useEffect, useState } from "react";
+import { styled } from "styled-components";
 
-const freeShippingThreshold = 1000;
+const freeShippingThreshold = 150;
+
+const ProgressBarTrack = styled.div`
+  background-color: #d7dad2;
+  height: 10px;
+  width: 100%;
+`;
+const ProgressBar = styled.div`
+  background-color: #155343;
+  height: 10px;
+`;
 
 const FreeShippingProgressBar: FC<{
   totalAmount: number;
 }> = ({ totalAmount }) => {
   const [progress, setProgress] = useState(0);
+  const roundTotalAmount = Math.round(totalAmount);
 
   useEffect(() => {
-    const calculatedProgress = Math.min(
-      (totalAmount / freeShippingThreshold) * 100,
+    const calculatedProgress: number = Math.min(
+      (roundTotalAmount / freeShippingThreshold) * 100,
       100
     );
     setProgress(calculatedProgress);
-  }, [totalAmount]);
+  }, [roundTotalAmount]);
 
   const calculateAmountLeft = useCallback(() => {
-    const amountLeft = freeShippingThreshold - totalAmount;
+    const amountLeft: number = freeShippingThreshold - roundTotalAmount;
     return amountLeft > 0 ? amountLeft.toFixed(2) : 0;
-  }, [totalAmount]);
+  }, [roundTotalAmount]);
 
   const [amountLeft, setAmountLeft] = useState<string | number>();
   useEffect(() => {
@@ -33,21 +45,9 @@ const FreeShippingProgressBar: FC<{
             You're <span className="font-bold">{`$${amountLeft}`}</span> away
             from free shipping!
           </p>
-          <div
-            style={{
-              backgroundColor: "#D7DAD2",
-              height: "10px",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                width: `${progress}%`,
-                backgroundColor: "#155343",
-                height: "10px",
-              }}
-            ></div>
-          </div>
+          <ProgressBarTrack>
+            <ProgressBar style={{ width: `${progress}%` }} />
+          </ProgressBarTrack>
         </>
       ) : (
         <p className="text-center w-full py-2 font-extrabold">
