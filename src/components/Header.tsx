@@ -4,7 +4,7 @@ import Image from "./Common/Image";
 import { Link } from "react-router-dom";
 
 const Header: FC = () => (
-  <header className="flex justify-between flex-nowrap px-4 py-4 lg:px-6 lg:py-2 items-center mt-2 lg:mt-6">
+  <header className="flex justify-between flex-nowrap px-4 py-4 lg:px-6 lg:py-2 items-center mt-2 lg:mt-6 ">
     <Link to="/">
       <Image
         imageUrl="/images/fgt-logo.svg"

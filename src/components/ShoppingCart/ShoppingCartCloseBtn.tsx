@@ -1,19 +1,17 @@
-import Image from "components/Common/Image";
+import Button from "components/Common/Button";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import { toggleCart } from "utils/shoppingCart-helper";
 
 const ShoppingCartCloseBtn = () => {
-  const { dispatch } = useShoppingCart();
+  const { state, dispatch } = useShoppingCart();
 
   return (
     <div className="w-1/2">
-      <button onClick={() => toggleCart(dispatch)}>
-        <Image
-          imageUrl="\images\close-btn.svg"
-          altText="Close Shopping Cart"
-          style={{ width: "24px" }}
-        />
-      </button>
+      <Button
+        imageUrl="\images\close-btn.svg"
+        altText="Close Shopping Cart"
+        onClick={() => toggleCart(state, dispatch)}
+      />
     </div>
   );
 };

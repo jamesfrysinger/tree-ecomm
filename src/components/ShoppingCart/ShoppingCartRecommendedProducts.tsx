@@ -1,4 +1,5 @@
 import axios from "axios";
+import Button from "components/Common/Button";
 import Image from "components/Common/Image";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import { useEffect, useState } from "react";
@@ -46,14 +47,19 @@ const ShoppingCartRecommendedProducts = () => {
       {recommendations?.map((rec) => {
         const product = buildProductForCart(rec);
 
-        const removeRec = productsInCart.find((prod) => prod.id === rec.id);
+        const recommendationIsInCart = productsInCart.find(
+          (prod) => prod.id === rec.id
+        );
 
-        const showTreeKit =
-          removeRec?.title === "Tree Planting Kit" &&
+        const showRecommendationAnyway =
+          recommendationIsInCart?.title === "Tree Planting Kit" &&
           treesInCartQuantity > plantingKitInCartQuantity;
 
-        return !removeRec || showTreeKit ? (
-          <div className="flex items-center justify-evenly py-6 px-6">
+        return !recommendationIsInCart || showRecommendationAnyway ? (
+          <div
+            className="flex items-center justify-evenly py-6 px-6"
+            key={product.id}
+          >
             <Image
               imageUrl={rec.thumbnail.src}
               altText={rec.title}
@@ -62,29 +68,26 @@ const ShoppingCartRecommendedProducts = () => {
               className="w-1/4 pr-3"
             />
             <p className="w-2/4 text-xl font-semibold">{rec.title}</p>
-            <button
+            <Button
               className="w-1/4"
+              imageUrl="/images/plus-circle.svg"
+              altText="Add Quantity"
               onClick={() => addToCart(product, dispatch)}
-            >
-              <Image
-                imageUrl="/images/plus-circle.svg"
-                altText="Add Quantity"
-                style={{ width: "36px" }}
-              />
-            </button>
+              imageStyle={{ width: "36px" }}
+            />
           </div>
         ) : (
-          <div className="py-3 px-6">
+          <div className="py-3 px-6" key={product.id}>
             <div className="w-full">
               <p className="font-bold text-sm">Added to cart!</p>
               {product.title}
             </div>
-            <button
-              onClick={() => removeFromCart(product.id, dispatch)}
+            <Button
               className="text-sm text-red-600"
+              onClick={() => removeFromCart(product.id, dispatch)}
             >
               Undo
-            </button>
+            </Button>
           </div>
         );
       })}

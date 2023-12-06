@@ -8,11 +8,11 @@ export interface IProductShoppingCart {
   quantity?: number;
 }
 
-export interface IShoppingCartState {
+export type IShoppingCartState = {
   products: IProductShoppingCart[];
   subTotal: number;
   cartIsOpen: boolean;
-}
+};
 
 export type TAction =
   | { type: "ADD_TO_CART" | "INCREASE_QUANTITY"; payload: IProductShoppingCart }

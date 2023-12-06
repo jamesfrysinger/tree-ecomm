@@ -1,5 +1,8 @@
 import { IProductDetails } from "types/productsType";
-import { IProductShoppingCart } from "types/shoppingCartType";
+import {
+  IProductShoppingCart,
+  IShoppingCartState,
+} from "types/shoppingCartType";
 import { TAction } from "types/shoppingCartType";
 
 export const formattedPrice = (price: number) => {
@@ -38,10 +41,17 @@ export const removeFromCart = (
   dispatch({ type: "REMOVE_FROM_CART", payload: { id: productId } });
 };
 
-export const toggleCart = (dispatch: React.Dispatch<TAction>) => {
+export const toggleCart = (
+  state: IShoppingCartState,
+  dispatch: React.Dispatch<TAction>
+) => {
   dispatch({
     type: "TOGGLE_CART",
   });
+
+  !state.cartIsOpen
+    ? document.body.classList.add("overflow-hidden")
+    : document.body.classList.remove("overflow-hidden");
 };
 
 export const buildProductForCart = (data: IProductDetails) => {

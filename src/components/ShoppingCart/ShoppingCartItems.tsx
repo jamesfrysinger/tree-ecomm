@@ -2,7 +2,8 @@ import Image from "components/Common/Image";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import { FC } from "react";
 import { removeFromCart } from "utils/shoppingCart-helper";
-import EditProductQuantity from "./EditCartProductQuantity";
+import ShoppingCarItemQuantity from "./ShoppingCarItemQuantity";
+import Button from "components/Common/Button";
 
 const ShoppingCartItems: FC = () => {
   const { state, dispatch } = useShoppingCart();
@@ -23,18 +24,16 @@ const ShoppingCartItems: FC = () => {
               {product.title}
               <div className="flex w-full mt-4">
                 <p>${product.price}</p>
-                <EditProductQuantity product={product} />
+                <ShoppingCarItemQuantity product={product} />
               </div>
             </div>
-            <button
-              onClick={() => removeFromCart(product.id as number, dispatch)}
+            <Button
               className="ml-auto"
-            >
-              <Image
-                imageUrl="/images/remove-icon.svg"
-                altText="Remove item from cart"
-              />
-            </button>
+              imageUrl="/images/remove-icon.svg"
+              altText="Remove item from cart"
+              onClick={() => removeFromCart(product.id as number, dispatch)}
+              imageStyle={{ width: "36px" }}
+            />
           </div>
         ))
       ) : (

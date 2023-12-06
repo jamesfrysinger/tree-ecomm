@@ -31,6 +31,16 @@ const saveStateToLocalStorage = (state: IShoppingCartState) => {
   }
 };
 
+window.addEventListener("beforeunload", () => {
+  const existingState = loadStateFromLocalStorage() ?? {
+    products: [],
+    subTotal: 0,
+    cartIsOpen: false,
+  };
+  const newState = { ...existingState, cartIsOpen: false };
+  saveStateToLocalStorage(newState);
+});
+
 export const ShoppingCartProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {

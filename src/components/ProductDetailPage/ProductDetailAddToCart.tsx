@@ -19,7 +19,7 @@ const ButtonAddToCart = styled.button`
 const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
   productDetails,
 }) => {
-  const { dispatch } = useShoppingCart();
+  const { state, dispatch } = useShoppingCart();
 
   const product = buildProductForCart(productDetails);
 
@@ -27,7 +27,7 @@ const ProductDetailAddToCart: FC<ProductDetailsComponent> = ({
     <ButtonAddToCart
       onClick={() => {
         addToCart(product, dispatch);
-        toggleCart(dispatch);
+        toggleCart(state, dispatch);
       }}
       disabled={!productDetails}
       className="h-12 rounded-md w-full hover:bg-red-700 transition-all text-white text-2xl"

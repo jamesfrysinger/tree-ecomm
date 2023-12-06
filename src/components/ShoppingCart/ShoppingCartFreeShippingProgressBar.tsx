@@ -13,7 +13,7 @@ const ProgressBar = styled.div`
   height: 10px;
 `;
 
-const FreeShippingProgressBar: FC<{
+const ShoppingCartFreeShippingProgressBar: FC<{
   totalAmount: number;
 }> = ({ totalAmount }) => {
   const [progress, setProgress] = useState(0);
@@ -58,4 +58,4 @@ const FreeShippingProgressBar: FC<{
   );
 };
 
-export default FreeShippingProgressBar;
+export default ShoppingCartFreeShippingProgressBar;
