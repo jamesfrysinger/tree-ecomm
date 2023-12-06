@@ -1,11 +1,11 @@
 import Image from "components/Common/Image";
 import { FC } from "react";
-import CloseShoppingCart from "./CloseShoppingCart";
+import ShoppingCartCloseBtn from "./ShoppingCartCloseBtn";
 
 const ShoppingCartHeader: FC = () => {
   return (
     <header className="flex justify-start sticky top-0 py-6 bg-white">
-      <CloseShoppingCart />
+      <ShoppingCartCloseBtn />
       <Image
         className="w-1/2"
         imageUrl="\images\cart-logo.svg"

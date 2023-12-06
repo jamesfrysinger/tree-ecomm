@@ -6,7 +6,7 @@ interface IProductTileGallery {
   thumbnail: IProductThumbnail;
 }
 
-const ProductTileGallery: FC<IProductTileGallery> = ({ thumbnail }) => (
+const ProductLandingTileGallery: FC<IProductTileGallery> = ({ thumbnail }) => (
   <Image
     imageUrl={thumbnail.src}
     altText={thumbnail.alt}
@@ -15,4 +15,4 @@ const ProductTileGallery: FC<IProductTileGallery> = ({ thumbnail }) => (
   />
 );
 
-export default ProductTileGallery;
+export default ProductLandingTileGallery;

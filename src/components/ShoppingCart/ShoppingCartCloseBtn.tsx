@@ -2,7 +2,7 @@ import Image from "components/Common/Image";
 import { useShoppingCart } from "contexts/ShoppingCartContext";
 import { toggleCart } from "utils/shoppingCart-helper";
 
-const CloseShoppingCart = () => {
+const ShoppingCartCloseBtn = () => {
   const { dispatch } = useShoppingCart();
 
   return (
@@ -18,4 +18,4 @@ const CloseShoppingCart = () => {
   );
 };
 
-export default CloseShoppingCart;
+export default ShoppingCartCloseBtn;

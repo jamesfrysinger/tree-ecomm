@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import ProductTile from "../components/ProductLandingPage/ProductTile";
+import ProductLandingTile from "../components/ProductLandingPage/ProductLandingTile";
 import axios from "axios";
 import { IProduct } from "types/productsType";
 
@@ -15,7 +15,7 @@ const ProductLandingPage: FC = () => {
   return (
     <section className="flex flex-wrap">
       {products?.products.map((product) => (
-        <ProductTile product={product} key={product.id} />
+        <ProductLandingTile product={product} key={product.id} />
       ))}
     </section>
   );

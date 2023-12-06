@@ -4,7 +4,7 @@ import { FC } from "react";
 import { removeFromCart } from "utils/shoppingCart-helper";
 import EditProductQuantity from "./EditCartProductQuantity";
 
-const ItemsInShoppingCart: FC = () => {
+const ShoppingCartItems: FC = () => {
   const { state, dispatch } = useShoppingCart();
 
   return (
@@ -44,4 +44,4 @@ const ItemsInShoppingCart: FC = () => {
   );
 };
 
-export default ItemsInShoppingCart;
+export default ShoppingCartItems;

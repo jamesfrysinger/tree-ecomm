@@ -9,7 +9,7 @@ import {
   removeFromCart,
 } from "utils/shoppingCart-helper";
 
-const RecommendedProducts = () => {
+const ShoppingCartRecommendedProducts = () => {
   const [recommendations, setRecommendations] = useState<IProductDetails[]>();
   useEffect(() => {
     axios
@@ -92,4 +92,4 @@ const RecommendedProducts = () => {
   );
 };
 
-export default RecommendedProducts;
+export default ShoppingCartRecommendedProducts;
