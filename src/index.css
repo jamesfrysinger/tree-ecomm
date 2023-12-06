@@ -16,7 +16,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-green);
 }
-
-.header-bg {
-  background-color: var(--color-green);
-}
