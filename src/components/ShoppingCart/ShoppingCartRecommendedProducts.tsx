@@ -25,6 +25,8 @@ const ShoppingCartRecommendedProducts = () => {
   const [plantingKitInCartQuantity, setPlantingKitInCartQuantity] =
     useState<number>(0);
 
+  const treeKit = "Tree Planting Kit";
+
   useEffect(() => {
     setTreesInCartQuantity(0);
     setPlantingKitInCartQuantity(0);
@@ -34,7 +36,7 @@ const ShoppingCartRecommendedProducts = () => {
       if (item.productType === "Tree") {
         setTreesInCartQuantity((prev) => prev + (itemQuantity ?? 0));
       }
-      if (item.title === "Tree Planting Kit") {
+      if (item.title === treeKit) {
         setPlantingKitInCartQuantity((prev) => prev + (itemQuantity ?? 0));
       }
     });
@@ -51,7 +53,7 @@ const ShoppingCartRecommendedProducts = () => {
         );
 
         const showRecommendationAnyway =
-          recommendationIsInCart?.title === "Tree Planting Kit" &&
+          recommendationIsInCart?.title === treeKit &&
           treesInCartQuantity > plantingKitInCartQuantity;
 
         return !recommendationIsInCart || showRecommendationAnyway ? (
