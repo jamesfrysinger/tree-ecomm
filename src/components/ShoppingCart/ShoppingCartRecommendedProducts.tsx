@@ -33,7 +33,8 @@ const ShoppingCartRecommendedProducts = () => {
       const itemQuantity = item.quantity;
       if (item.productType === "Tree") {
         setTreesInCartQuantity((prev) => prev + (itemQuantity ?? 0));
-      } else if (item.title === "Tree Planting Kit") {
+      }
+      if (item.title === "Tree Planting Kit") {
         setPlantingKitInCartQuantity((prev) => prev + (itemQuantity ?? 0));
       }
     });
