@@ -27,18 +27,15 @@ const ShoppingCartRecommendedProducts = () => {
 
   useEffect(() => {
     setTreesInCartQuantity(0);
-    productsInCart.find((item) =>
-      item.productType === "Tree"
-        ? setTreesInCartQuantity((prev) => prev + (item.quantity ?? 0))
-        : null
-    );
-
     setPlantingKitInCartQuantity(0);
-    productsInCart.find((item) =>
-      item.title === "Tree Planting Kit"
-        ? setPlantingKitInCartQuantity((prev) => prev + (item.quantity ?? 0))
-        : null
-    );
+
+    productsInCart.forEach((item) => {
+      if (item.productType === "Tree") {
+        setTreesInCartQuantity((prev) => prev + (item.quantity ?? 0));
+      } else if (item.title === "Tree Planting Kit") {
+        setPlantingKitInCartQuantity((prev) => prev + (item.quantity ?? 0));
+      }
+    });
   }, [productsInCart, setTreesInCartQuantity, setPlantingKitInCartQuantity]);
 
   return (
