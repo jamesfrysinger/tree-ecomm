@@ -68,7 +68,7 @@ const ShoppingCartRecommendedProducts = () => {
             />
             <p className="w-2/4 text-xl font-semibold pr-6">{rec.title}</p>
             <Button
-              className="w-1/4"
+              className="w-1/4 flex-shrink-0"
               imageUrl="/images/plus-circle.svg"
               altText="Add Quantity"
               onClick={() => addToCart(product, dispatch)}
