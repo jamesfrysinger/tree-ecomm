@@ -33,7 +33,7 @@ const ShoppingCartRecommendedProducts = () => {
 
         return !recommendationIsInCart ||
           matchProductAndRecQuantityInCart(
-            state,
+            state.products,
             {
               productType: "Tree",
               rec: "Tree Planting Kit",

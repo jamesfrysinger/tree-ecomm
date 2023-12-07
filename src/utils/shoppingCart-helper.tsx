@@ -67,7 +67,7 @@ export const buildProductForCart = (data: IProductDetails) => {
 };
 
 export const matchProductAndRecQuantityInCart = (
-  cartState: IShoppingCartState,
+  cartState: IProductShoppingCart[],
   productToMatchQuantity: {
     productType: string;
     rec: string;
@@ -75,11 +75,11 @@ export const matchProductAndRecQuantityInCart = (
   currentRec: string
 ): boolean => {
   if (currentRec === productToMatchQuantity.rec) {
-    const productTypeInCart = cartState.products
+    const productTypeInCart = cartState
       .filter((prod) => productToMatchQuantity.productType === prod.productType)
       .reduce((sum, tree) => sum + (tree.quantity ?? 0), 0);
 
-    const recInCart = cartState.products
+    const recInCart = cartState
       .filter((prod) => productToMatchQuantity.rec === prod.title)
       .reduce((sum, rec) => sum + (rec.quantity ?? 0), 0);
 
