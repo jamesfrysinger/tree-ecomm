@@ -7,7 +7,7 @@ const Button: FC<{
   imageUrl?: string;
   altText?: string;
   className?: string;
-  style?: CSSProperties;
+  buttonStyle?: CSSProperties;
   imageStyle?: CSSProperties;
 }> = ({
   children,
@@ -15,11 +15,11 @@ const Button: FC<{
   imageUrl,
   altText,
   className,
-  style,
+  buttonStyle,
   imageStyle,
 }) => {
   return (
-    <button onClick={onClick} className={className} style={style}>
+    <button onClick={onClick} className={className} style={buttonStyle}>
       {imageUrl && (
         <Image imageUrl={imageUrl} altText={altText || ""} style={imageStyle} />
       )}

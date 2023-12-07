@@ -20,7 +20,7 @@ const ShoppingCartItems: FC = () => {
               style={{ width: "110px" }}
               className="pr-3"
             />
-            <div className="product-details">
+            <div className="pr-6">
               {product.title}
               <div className="flex w-full mt-4">
                 <p>${product.price}</p>
@@ -28,11 +28,10 @@ const ShoppingCartItems: FC = () => {
               </div>
             </div>
             <Button
-              className="ml-auto"
+              className="ml-auto flex-shrink-0"
               imageUrl="/images/remove-icon.svg"
               altText="Remove item from cart"
               onClick={() => removeFromCart(product.id as number, dispatch)}
-              imageStyle={{ width: "36px" }}
             />
           </div>
         ))

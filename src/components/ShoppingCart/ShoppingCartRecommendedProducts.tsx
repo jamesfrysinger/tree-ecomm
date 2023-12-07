@@ -66,7 +66,7 @@ const ShoppingCartRecommendedProducts = () => {
               style={{ width: "110px" }}
               className="w-1/4 pr-3"
             />
-            <p className="w-2/4 text-xl font-semibold">{rec.title}</p>
+            <p className="w-2/4 text-xl font-semibold pr-6">{rec.title}</p>
             <Button
               className="w-1/4"
               imageUrl="/images/plus-circle.svg"
