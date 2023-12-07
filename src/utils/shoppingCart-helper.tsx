@@ -65,3 +65,25 @@ export const buildProductForCart = (data: IProductDetails) => {
     quantity: 1,
   };
 };
+
+export const matchProductAndRecQuantityInCart = (
+  cartState: IShoppingCartState,
+  productToMatchQuantity: {
+    productType: string;
+    rec: string;
+  },
+  currentRec: string
+): boolean => {
+  if (currentRec === productToMatchQuantity.rec) {
+    const productTypeInCart = cartState.products
+      .filter((prod) => productToMatchQuantity.productType === prod.productType)
+      .reduce((sum, tree) => sum + (tree.quantity ?? 0), 0);
+
+    const recInCart = cartState.products
+      .filter((prod) => productToMatchQuantity.rec === prod.title)
+      .reduce((sum, rec) => sum + (rec.quantity ?? 0), 0);
+
+    return productTypeInCart > recInCart;
+  }
+  return false;
+};

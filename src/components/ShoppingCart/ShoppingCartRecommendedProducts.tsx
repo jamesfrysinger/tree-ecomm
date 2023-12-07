@@ -7,10 +7,12 @@ import { IProductDetails } from "types/productsType";
 import {
   addToCart,
   buildProductForCart,
+  matchProductAndRecQuantityInCart,
   removeFromCart,
 } from "utils/shoppingCart-helper";
 
 const ShoppingCartRecommendedProducts = () => {
+  const { state, dispatch } = useShoppingCart();
   const [recommendations, setRecommendations] = useState<IProductDetails[]>();
   useEffect(() => {
     axios
@@ -19,44 +21,25 @@ const ShoppingCartRecommendedProducts = () => {
       .catch((err) => console.warn(err));
   }, []);
 
-  const { state, dispatch } = useShoppingCart();
-  const productsInCart = state.products;
-  const [treesInCartQuantity, setTreesInCartQuantity] = useState<number>(0);
-  const [plantingKitInCartQuantity, setPlantingKitInCartQuantity] =
-    useState<number>(0);
-
-  const treeKit = "Tree Planting Kit";
-
-  useEffect(() => {
-    setTreesInCartQuantity(0);
-    setPlantingKitInCartQuantity(0);
-
-    productsInCart.forEach((item) => {
-      const itemQuantity = item.quantity;
-      if (item.productType === "Tree") {
-        setTreesInCartQuantity((prev) => prev + (itemQuantity ?? 0));
-      }
-      if (item.title === treeKit) {
-        setPlantingKitInCartQuantity((prev) => prev + (itemQuantity ?? 0));
-      }
-    });
-  }, [productsInCart, setTreesInCartQuantity, setPlantingKitInCartQuantity]);
-
   return (
     <div className="recommended-items">
       <h3 className="font-medium py-6 text-2xl">Recommended Items</h3>
       {recommendations?.map((rec) => {
         const product = buildProductForCart(rec);
 
-        const recommendationIsInCart = productsInCart.find(
+        const recommendationIsInCart = state.products.find(
           (prod) => prod.id === rec.id
         );
 
-        const showRecommendationAnyway =
-          recommendationIsInCart?.title === treeKit &&
-          treesInCartQuantity > plantingKitInCartQuantity;
-
-        return !recommendationIsInCart || showRecommendationAnyway ? (
+        return !recommendationIsInCart ||
+          matchProductAndRecQuantityInCart(
+            state,
+            {
+              productType: "Tree",
+              rec: "Tree Planting Kit",
+            },
+            rec.title
+          ) ? (
           <div
             className="flex items-center justify-evenly py-6 px-6"
             key={product.id}
