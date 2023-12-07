@@ -30,10 +30,11 @@ const ShoppingCartRecommendedProducts = () => {
     setPlantingKitInCartQuantity(0);
 
     productsInCart.forEach((item) => {
+      const itemQuantity = item.quantity;
       if (item.productType === "Tree") {
-        setTreesInCartQuantity((prev) => prev + (item.quantity ?? 0));
+        setTreesInCartQuantity((prev) => prev + (itemQuantity ?? 0));
       } else if (item.title === "Tree Planting Kit") {
-        setPlantingKitInCartQuantity((prev) => prev + (item.quantity ?? 0));
+        setPlantingKitInCartQuantity((prev) => prev + (itemQuantity ?? 0));
       }
     });
   }, [productsInCart, setTreesInCartQuantity, setPlantingKitInCartQuantity]);
